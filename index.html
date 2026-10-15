@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loạn Thế Thất Hùng 0.5</title>
+<style>
+:root{--bg:#101311;--panel:#1d2320;--panel2:#252c27;--gold:#d9b66d;--text:#f1eadb;--muted:#b9b2a3;--red:#b65d4d;--green:#83a977;--blue:#8eafc4}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#30372d 0,#101311 62%);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:22px 16px 17px;border-bottom:1px solid #65543a;background:linear-gradient(120deg,#211c16ee,#171b1bee)}.wrap{max-width:1180px;margin:auto}h1{font:clamp(27px,5vw,43px) Georgia,serif;letter-spacing:.04em;margin:0;color:var(--gold)}.subtitle{color:var(--muted);margin-top:5px}.topline{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.pill{border:1px solid #66583c;background:#27251f;padding:6px 10px;border-radius:999px;font-size:12px}
+main{max-width:1180px;margin:auto;padding:15px;display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel{min-width:0;background:linear-gradient(145deg,#202724,#171b19);border:1px solid #45483d;border-radius:14px;padding:15px;box-shadow:0 10px 28px #0003}.panel h2{font:22px Georgia,serif;color:var(--gold);margin:0 0 11px}.panel h3{font-size:15px;margin:12px 0 7px}.wide{grid-column:1/-1}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.stat{background:#111615;border:1px solid #353a35;border-radius:9px;padding:9px}.stat small{display:block;color:var(--muted);font-size:11px}.stat strong{font-size:20px;color:#f4dfab}.notice{border:1px solid #705b36;background:#29251c;padding:10px;border-radius:9px;margin-bottom:10px;color:#e8d7b0}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}button,select{font:inherit;color:var(--text);background:#343a32;border:1px solid #756443;border-radius:8px;padding:9px 11px;cursor:pointer}button:hover{filter:brightness(1.14)}button:disabled{opacity:.4;cursor:not-allowed}.primary{background:#75522c;border-color:#c39a51}.danger{background:#612f2b;border-color:#a95b4b}.small{font-size:12px;color:var(--muted)}.maplayout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(190px,1fr);gap:12px;align-items:start}.mapbox{background:#151d1b;border:1px solid #3e4b3f;border-radius:12px;padding:6px;overflow:hidden}.mapbox svg{display:block;width:100%;height:auto;max-height:440px}.territory{stroke:#bca775;stroke-width:2;cursor:pointer;transition:filter .15s}.territory:hover{filter:brightness(1.25)}.territory.selected{stroke:#fff0a8;stroke-width:4}.territory.owned{stroke:#f1d17f}.maplabel{font:bold 13px system-ui;fill:#f4ecd8;text-anchor:middle;pointer-events:none;paint-order:stroke;stroke:#17201a;stroke-width:3px;stroke-linejoin:round}.city{fill:#f6d18a;stroke:#3a2b19;stroke-width:2;cursor:pointer}.citylabel{font:11px system-ui;fill:#fff0cf;paint-order:stroke;stroke:#17201a;stroke-width:3px;pointer-events:none}.armyicon{cursor:pointer}.armyicon circle{stroke:#fff0bf;stroke-width:1.5}.armyicon text{font-size:12px;text-anchor:middle;dominant-baseline:middle;pointer-events:none}.sidebox{background:#141917;border:1px solid #353d34;border-radius:10px;padding:11px}.state-list{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}.statebtn{text-align:left;padding:8px;background:#242b25;border-color:#485044}.statebtn b{display:block;color:var(--gold)}.statebtn span{font-size:11px;color:var(--muted)}.statebtn.owned{background:#393020}.general{display:flex;gap:10px;align-items:center;background:#131816;padding:10px;border:1px solid #343a34;border-radius:10px;margin-bottom:7px}.seal{width:42px;height:42px;display:grid;place-items:center;background:#56352c;color:#f4d88f;font:23px Georgia;border:1px solid #a7774a;border-radius:8px;flex-shrink:0}.general p{margin:2px 0;color:var(--muted);font-size:12px}.bar{height:6px;background:#343a35;border-radius:9px;overflow:hidden;margin-top:4px}.bar i{display:block;height:100%;background:var(--green)}.units{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.unit{background:#141917;border:1px solid #3a4138;border-radius:9px;padding:9px}.unit strong{display:block;color:var(--gold)}.unit input{width:100%;margin-top:7px;accent-color:#d9b66d}.battlefield{height:200px;position:relative;overflow:hidden;border:1px solid #485341;border-radius:10px;background:linear-gradient(#526653 0 35%,#59633d 35% 72%,#3e4b31 72%);margin:9px 0}.battlefield:before{content:"";position:absolute;inset:0;background:linear-gradient(165deg,transparent 48%,#2d3b2a55 49% 55%,transparent 56%),radial-gradient(ellipse at 50% 100%,#18251d55,transparent 65%)}.line{position:absolute;left:0;right:0;top:50%;border-top:2px dashed #eadbb180}.armyrow{position:absolute;display:flex;gap:4px;flex-wrap:wrap;width:45%;align-content:center}.armyrow.player{left:4%;top:12%;height:76%}.armyrow.enemy{right:4%;top:12%;height:76%;justify-content:flex-end}.soldier{width:17px;height:25px;clip-path:polygon(50% 0,88% 24%,75% 100%,25% 100%,12% 24%);background:#d9b66d;border:1px solid #392b19;filter:drop-shadow(1px 2px 1px #111)}.enemy .soldier{background:#b75d4d}.soldier.cav{height:30px;width:23px;clip-path:polygon(10% 0,90% 20%,100% 72%,70% 100%,20% 90%,0 45%)}.soldier.arch{background:#86a9bc}.log{max-height:230px;overflow:auto;display:flex;flex-direction:column;gap:6px}.entry{padding:8px 10px;border-left:3px solid #827047;background:#151918;border-radius:5px;font-size:13px}.entry.good{border-color:var(--green)}.entry.bad{border-color:var(--red)}.entry.info{border-color:var(--blue)}.footer{max-width:1180px;margin:auto;padding:0 15px 24px;color:var(--muted);font-size:11px}
+@media(max-width:760px){main{grid-template-columns:1fr;padding:10px}.wide{grid-column:auto}.panel{padding:12px}.maplayout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.state-list{grid-template-columns:repeat(2,1fr)}.units{grid-template-columns:repeat(3,1fr)}.battlefield{height:170px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>LOẠN THẾ THẤT HÙNG</h1><div class="subtitle">Bản 0.5 · Ngoại giao · Loạn thế · Kế vị · Chiến thuật đại quân · Triều chính · Danh tướng · Dựng nghiệp bá vương</div>
+<div class="topline"><span class="pill">Niên đại: <b id="year">403 TCN</b></span><span class="pill">Quốc gia: <b>Tần</b></span><span class="pill">Thành trì: <b id="cityCount">1/7</b></span><span class="pill">Chiến dịch: <b id="campaign">Chưa mở</b></span></div>
+</div></header>
+<main>
+<section class="panel">
+<h2>Triều chính nước Tần</h2><div class="notice" id="story">Thiên hạ phân tranh. Tần có đất hiểm phía tây; hãy tích lương, luyện quân và chọn thời cơ tiến về phía đông.</div>
+<div class="stats">
+<div class="stat"><small>Ngân khố</small><strong id="gold">120</strong><small>lạng vàng</small></div><div class="stat"><small>Lương thực</small><strong id="food">160</strong><small>đơn vị</small></div><div class="stat"><small>Binh lực</small><strong id="troops">8.000</strong><small>quân</small></div><div class="stat"><small>Dân tâm</small><strong id="morale">72</strong><small>/ 100</small><div class="bar"><i id="moraleBar" style="width:72%"></i></div></div>
+</div>
+<h3>Quốc sách</h3><div class="actions"><button class="primary" onclick="act('tax')">Thu thuế (+35 vàng)</button><button onclick="act('farm')">Khuyến nông (+55 lương)</button><button onclick="act('recruit')">Chiêu binh (+1.200 quân)</button><button onclick="act('reform')">Cải cách (+10 dân tâm)</button></div>
+<h3>Di chuyển quân</h3><div class="small">Chọn một nước trên bản đồ, sau đó ra lệnh điều quân. Mỗi lần hành động có thể làm thời gian trôi qua.</div>
+<div class="actions"><button onclick="march()">Điều quân đến mục tiêu</button><button onclick="endTurn()">Nghị triều: sang năm mới</button><button onclick="saveGame()">Lưu tiến trình</button><button onclick="resetGame()">Chơi lại</button></div><p class="small" id="saveStatus">Tiến trình lưu trên trình duyệt của thiết bị.</p>
+</section>
+<section class="panel">
+<h2>Danh tướng & mưu sĩ</h2><div id="generals"></div>
+<div class="notice" id="generalInfo">Chọn một tướng để xem thông tin và giao chức vụ.</div>
+<div class="actions"><button onclick="promote()">Thăng chức tướng được chọn</button><button onclick="trainGeneral()">Huấn luyện tướng</button></div>
+<h3>Chọn tướng chủ soái</h3><select id="commander" style="width:100%" onchange="setCommander(this.value)"></select>
+</section>
+<section class="panel wide">
+<h2>Bản đồ chư hầu</h2><p class="small">Bản đồ chiến lược minh họa bảy nước. Chạm vào lãnh thổ hoặc tên nước để chọn mục tiêu. Hình dạng và vị trí được giản lược, không phải bản đồ địa lý chính xác.</p>
+<div class="maplayout"><div class="mapbox"><svg id="map" viewBox="0 0 700 430" role="img" aria-label="Bản đồ chiến lược bảy nước thời Chiến Quốc">
+<path d="M34 45 L140 26 L224 58 L270 35 L340 64 L402 39 L472 66 L535 52 L612 83 L665 130 L638 185 L670 241 L625 290 L605 358 L536 393 L468 369 L408 401 L337 377 L276 399 L220 356 L158 368 L108 318 L52 299 L68 226 L30 174 Z" fill="#29362d" stroke="#71806a" stroke-width="2"/>
+<path class="territory" data-state="Yên" d="M140 45 L224 58 L270 35 L340 64 L330 125 L266 142 L215 118 L150 135 L105 103 Z" fill="#665b3d"/>
+<path class="territory" data-state="Triệu" d="M150 135 L215 118 L266 142 L330 125 L352 190 L300 220 L240 210 L188 232 L132 205 Z" fill="#586d4b"/>
+<path class="territory" data-state="Ngụy" d="M266 142 L330 125 L385 151 L402 203 L352 235 L300 220 L352 190 Z" fill="#76634b"/>
+<path class="territory" data-state="Hàn" d="M300 220 L352 235 L370 277 L326 302 L280 278 L240 270 L240 210 Z" fill="#7a4c3e"/>
+<path class="territory" data-state="Tần" d="M68 226 L132 205 L188 232 L240 210 L240 270 L280 278 L260 329 L220 356 L158 368 L108 318 L52 299 Z" fill="#8a6b35"/>
+<path class="territory" data-state="Tề" d="M385 151 L455 128 L535 145 L563 191 L520 229 L456 222 L402 203 Z" fill="#4d6970"/>
+<path class="territory" data-state="Sở" d="M370 277 L402 203 L456 222 L520 229 L563 191 L625 230 L605 292 L605 358 L536 393 L468 369 L408 401 L337 377 L326 302 Z" fill="#6b4b5d"/>
+<text class="maplabel" x="202" y="85">YÊN</text><text class="maplabel" x="231" y="175">TRIỆU</text><text class="maplabel" x="337" y="173">NGỤY</text><text class="maplabel" x="305" y="258">HÀN</text><text class="maplabel" x="151" y="288">TẦN</text><text class="maplabel" x="483" y="176">TỀ</text><text class="maplabel" x="470" y="310">SỞ</text>
+<g><circle class="city" cx="157" cy="275" r="6"/><text class="citylabel" x="166" y="270">Hàm Dương</text><circle class="city" cx="230" cy="165" r="5"/><text class="citylabel" x="238" y="160">Hàm Đan</text><circle class="city" cx="338" cy="179" r="5"/><text class="citylabel" x="346" y="175">Đại Lương</text><circle class="city" cx="302" cy="263" r="5"/><text class="citylabel" x="310" y="259">Tân Trịnh</text><circle class="city" cx="483" cy="177" r="5"/><text class="citylabel" x="491" y="172">Lâm Truy</text><circle class="city" cx="463" cy="310" r="5"/><text class="citylabel" x="471" y="305">Dĩnh Đô</text><circle class="city" cx="200" cy="77" r="5"/><text class="citylabel" x="208" y="72">Kế</text></g>
+<g id="armyLayer"></g>
+</svg></div>
+<div class="sidebox"><h3>Chư hầu</h3><div class="state-list" id="stateList"></div><h3>Tình báo mục tiêu</h3><div id="targetInfo" class="small">Chọn một nước trên bản đồ.</div><div class="actions"><button class="danger" id="attackBtn" onclick="openBattle()" disabled>Mở chiến dịch</button><button onclick="diplomacy()">Sai sứ cầu hòa</button></div></div>
+</div>
+</section>
+<section class="panel">
+<h2>Đội hình chiến đấu</h2><div class="small">Chỉnh quân số từng binh chủng trước trận. Kỵ binh cơ động; cung thủ gây sát thương từ xa; bộ binh giữ tuyến.</div>
+<div class="units">
+<div class="unit"><strong>🛡 Bộ binh</strong><span class="small" id="infLabel">4.000 quân</span><input id="inf" type="range" min="0" max="10000" step="100" value="4000" oninput="syncUnits()"></div>
+<div class="unit"><strong>🐎 Kỵ binh</strong><span class="small" id="cavLabel">2.000 quân</span><input id="cav" type="range" min="0" max="6000" step="100" value="2000" oninput="syncUnits()"></div>
+<div class="unit"><strong>🏹 Cung thủ</strong><span class="small" id="archLabel">2.000 quân</span><input id="arch" type="range" min="0" max="6000" step="100" value="2000" oninput="syncUnits()"></div>
+</div><div class="actions"><button onclick="autoBalance()">Tự cân đội hình</button><button class="primary" onclick="openBattle()" id="battleBtn" disabled>Tiến vào chiến trường</button></div>
+<div id="battleArea" style="display:none"><h3 id="battleTitle">Chiến trường</h3><div class="battlefield"><div class="line"></div><div class="armyrow player" id="playerSoldiers"></div><div class="armyrow enemy" id="enemySoldiers"></div></div><div id="battleReport" class="notice">Hai đạo quân đang dàn trận.</div><div class="actions"><button class="primary" onclick="resolveBattle()">Phát lệnh giao chiến</button><button onclick="retreat()">Rút quân</button></div></div>
+</section>
+<section class="panel wide">
+<h2>Ngoại giao, liên minh & kế vị</h2>
+<div class="stats">
+<div class="stat"><small>Uy vọng triều đình</small><strong id="legitimacy">55</strong><small>/ 100</small></div>
+<div class="stat"><small>Liên minh hiện tại</small><strong id="allianceCount">0</strong><small>nước</small></div>
+<div class="stat"><small>Nguy cơ nổi loạn</small><strong id="rebellionRisk">Thấp</strong><small id="rebellionText">Dân tâm ổn định</small></div>
+<div class="stat"><small>Người kế vị</small><strong id="heirName">Doanh Tứ</strong><small id="heirStatus">Thái tử chưa lập</small></div>
+</div>
+<h3>Chính sách với nước đang chọn: <span id="diplomacyTarget">Triệu</span></h3>
+<div class="actions"><button class="primary" onclick="makeAlliance()">Kết minh (30 vàng)</button><button onclick="offerTribute()">Cống lễ cầu hòa (20 vàng)</button><button class="danger" onclick="breakAlliance()">Bãi bỏ minh ước</button></div>
+<h3>Ổn định triều cương</h3>
+<div class="actions"><button onclick="rewardGenerals()">Ban thưởng chư tướng (25 vàng)</button><button onclick="relievePeople()">Miễn giảm sưu thuế (30 vàng)</button><button onclick="appointHeir()">Lập thái tử (40 vàng)</button><button class="primary" onclick="succession()">Truyền ngôi</button></div>
+<p class="small" id="diplomacyInfo">Quan hệ giữa các nước thay đổi theo quyết định của triều đình. Minh ước giúp giảm nguy cơ bị tập kích; nhưng có thể bị phá vỡ.</p>
+</section>
+<section class="panel wide">
+<h2>Sử ký chiến cuộc</h2><div class="log" id="log"></div>
+</section>
+</main><div class="footer">Loạn Thế Thất Hùng 0.5 · Nguyên mẫu chiến thuật chơi đơn. Dữ liệu sức mạnh và kết quả chiến đấu là mô phỏng phục vụ gameplay; bản đồ minh họa không nhằm tái hiện biên giới lịch sử chính xác.</div>
+<script>
+const initial=()=>({year:-403,gold:120,food:160,troops:8000,morale:72,owned:['Tần'],selected:'Triệu',commander:'Bạch Khởi',campaign:false,battleOpen:false,turn:0,units:{inf:4000,cav:2000,arch:2000},generals:[
+{name:'Bạch Khởi',title:'Đại tướng',role:'Thống lĩnh chiến trường',skill:'Binh pháp sát phạt',stat:96,loyalty:88,level:3,icon:'白',desc:'Tăng sức mạnh tấn công và giảm tổn thất khi chủ soái.'},
+{name:'Thương Ưởng',title:'Thừa tướng',role:'Cải cách pháp chế',skill:'Biến pháp cường quốc',stat:95,loyalty:81,level:2,icon:'商',desc:'Tăng hiệu quả cải cách và nguồn thu quốc gia.'},
+{name:'Mông Ngao',title:'Chinh đông tướng quân',role:'Công thành',skill:'Tiến quân vững chắc',stat:82,loyalty:85,level:1,icon:'蒙',desc:'Giỏi duy trì đội hình trong chiến dịch dài ngày.'}
+],states:[
+{name:'Tần',power:48,def:28,rich:30,desc:'Đất hiểm phía tây, nền tảng vững chắc.',x:157,y:275},
+{name:'Triệu',power:34,def:30,rich:24,desc:'Kỵ binh mạnh, phòng thủ kiên cường.',x:230,y:165},
+{name:'Ngụy',power:32,def:27,rich:29,desc:'Đất trung nguyên giàu có, thành lũy kiên cố.',x:338,y:179},
+{name:'Hàn',power:23,def:22,rich:20,desc:'Lãnh thổ nhỏ, nằm giữa các cường quốc.',x:302,y:263},
+{name:'Sở',power:42,def:31,rich:32,desc:'Lãnh thổ rộng lớn ở phương nam.',x:463,y:310},
+{name:'Tề',power:37,def:29,rich:34,desc:'Giàu thương mại, có nguồn lực dồi dào.',x:483,y:177},
+{name:'Yên',power:27,def:25,rich:21,desc:'Miền bắc xa xôi, quân đội thiện chiến.',x:200,y:77}
+],armies:[],log:[]});
+let g=initial(), chosenGeneral='Bạch Khởi';
+const $=id=>document.getElementById(id);
+function fmt(n){return Math.floor(Math.max(0,n)).toLocaleString('vi-VN')}
+function addLog(msg,type=''){g.log.unshift({msg,type});g.log=g.log.slice(0,22)}
+function currentTarget(){return g.states.find(s=>s.name===g.selected)}
+function render(){
+$('year').textContent=Math.abs(g.year)+' TCN';$('cityCount').textContent=g.owned.length+'/7';$('campaign').textContent=g.campaign?g.selected:'Chưa mở';
+['gold','food','troops','morale'].forEach(k=>$(k).textContent=fmt(g[k]));$('moraleBar').style.width=Math.max(0,Math.min(100,g.morale))+'%';
+document.querySelectorAll('.territory').forEach(el=>{el.classList.toggle('selected',el.dataset.state===g.selected);el.classList.toggle('owned',g.owned.includes(el.dataset.state));el.onclick=()=>selectState(el.dataset.state)});
+renderStateList();renderArmies();renderGenerals();syncUnits(false);
+let t=currentTarget();$('targetInfo').textContent=!t?'Chọn một nước trên bản đồ.':g.owned.includes(t.name)?t.name+' đã thuộc quyền kiểm soát của Tần.':t.name+' — '+t.desc+' Sức mạnh '+t.power+', phòng thủ '+t.def+'. Thành chính nằm trong vùng lãnh thổ được tô màu.';
+$('attackBtn').disabled=!t||g.owned.includes(t.name);$('battleBtn').disabled=!t||g.owned.includes(t.name);
+$('log').innerHTML=g.log.map(e=>'<div class="entry '+e.type+'">'+e.msg+'</div>').join('');
+if(g.owned.length===7)$('story').textContent='Thất quốc quy nhất! Bạn đã thống nhất thiên hạ. Giữ yên giang sơn mới là thử thách thực sự.';
+}
+function renderStateList(){let el=$('stateList');el.innerHTML='';g.states.forEach(s=>{let b=document.createElement('button');b.className='statebtn '+(g.owned.includes(s.name)?'owned':'');b.innerHTML='<b>'+s.name+(g.owned.includes(s.name)?' ✓':'')+'</b><span>Quân lực '+s.power+' · thủ '+s.def+'</span>';b.onclick=()=>selectState(s.name);el.appendChild(b)})}
+function selectState(name){g.selected=name;render();if(!g.owned.includes(name))$('battleTitle').textContent='Chiến dịch '+name}
+function renderArmies(){let layer=$('armyLayer');layer.innerHTML='';g.armies.forEach(a=>{let s=g.states.find(s=>s.name===a.to);let x=a.x,y=a.y;layer.innerHTML+=`<g class="armyicon" transform="translate(${x},${y})" title="Đạo quân Tần đang hành quân đến ${a.to}"><circle r="12" fill="#8a3d31"></circle><text y="1" fill="#fff3d4">⚑</text></g>`})}
+function renderGenerals(){let list=$('generals');list.innerHTML='';g.generals.forEach(gen=>{let div=document.createElement('div');div.className='general';div.style.outline=chosenGeneral===gen.name?'1px solid #d9b66d':'none';div.innerHTML=`<div class="seal">${gen.icon}</div><div style="flex:1"><b>${gen.name} · ${gen.title}</b><p>${gen.role} · Cấp ${gen.level}</p><p>Kỹ năng: ${gen.skill}</p><div class="small">Trung thành ${gen.loyalty}/100 · Năng lực ${gen.stat}</div><div class="bar"><i style="width:${gen.loyalty}%;background:${gen.loyalty<40?'#b65d4d':'#83a977'}"></i></div></div>`;div.onclick=()=>{chosenGeneral=gen.name;$('generalInfo').textContent=gen.name+': '+gen.desc;renderGenerals()};list.appendChild(div)});
+$('commander').innerHTML=g.generals.map(x=>`<option ${g.commander===x.name?'selected':''}>${x.name}</option>`).join('');
+if(!g.generals.find(x=>x.name===chosenGeneral))chosenGeneral=g.generals[0].name;
+}
+function setCommander(n){g.commander=n;addLog(n+' được giao quyền chủ soái chiến dịch.','info');render()}
+function promote(){let x=g.generals.find(x=>x.name===chosenGeneral);if(!x)return;if(g.gold<25){addLog('Không đủ vàng để ban thưởng và thăng chức.','bad');render();return}g.gold-=25;x.level++;x.loyalty=Math.min(100,x.loyalty+5);x.stat=Math.min(100,x.stat+2);addLog(x.name+' được thăng chức, năng lực và lòng trung thành tăng.','good');render()}
+function trainGeneral(){let x=g.generals.find(x=>x.name===chosenGeneral);if(g.food<15){addLog('Không đủ lương để tổ chức huấn luyện.','bad');render();return}g.food-=15;x.stat=Math.min(100,x.stat+3);x.loyalty=Math.min(100,x.loyalty+2);addLog(x.name+' hoàn thành đợt thao luyện, năng lực tăng.','good');render()}
+function syncUnits(update=true){let vals={inf:+$('inf').value,cav:+$('cav').value,arch:+$('arch').value};if(update)g.units=vals;['inf','cav','arch'].forEach(k=>$(k+'Label').textContent=fmt(vals[k])+' quân');}
+function autoBalance(){let n=g.troops;g.units={inf:Math.round(n*.5/100)*100,cav:Math.round(n*.25/100)*100,arch:Math.round(n*.25/100)*100};g.units.inf=Math.max(0,g.units.inf);['inf','cav','arch'].forEach(k=>$(k).value=Math.min(10000,g.units[k]));syncUnits();addLog('Quân sư sắp xếp lại đội hình: bộ binh giữ tuyến, kỵ binh cơ động, cung thủ yểm trợ.','info')}
+function advance(){g.year++;g.turn++;g.food-=Math.max(8,Math.floor(g.troops/1200));g.gold+=12;if(g.food<0){g.food=0;g.morale-=8;g.troops=Math.floor(g.troops*.94);addLog('Thiếu lương trong quân doanh! Dân tâm giảm, binh sĩ đào ngũ.','bad')}g.morale=Math.max(0,Math.min(100,g.morale));if(g.year< -221)g.year=-221;g.generals.forEach(x=>{if(x.loyalty<45&&Math.random()<.12)addLog('Tin báo: '+x.name+' tỏ vẻ bất mãn vì triều đình thiếu ân thưởng.','bad')})}
+function act(type){if(type==='tax'){g.gold+=35;g.morale-=5;addLog('Triều đình thu thuế, ngân khố tăng nhưng lòng dân bất mãn.')}
+if(type==='farm'){if(g.gold<20)return addLog('Không đủ vàng để khuyến nông.','bad');g.gold-=20;g.food+=55;g.morale=Math.min(100,g.morale+2);addLog('Đào kênh, mở ruộng; kho lương dần đầy.','good')}
+if(type==='recruit'){if(g.gold<30||g.food<25)return addLog('Không đủ vàng hoặc lương để chiêu binh.','bad');g.gold-=30;g.food-=25;g.troops+=1200;g.units.inf+=600;g.units.cav+=300;g.units.arch+=300;addLog('Tân binh nhập ngũ, quân kỳ nối dài ngoài thành.','good')}
+if(type==='reform'){if(g.gold<45)return addLog('Không đủ ngân khố để cải cách.','bad');g.gold-=45;g.morale=Math.min(100,g.morale+10);g.generals.find(x=>x.name==='Thương Ưởng').loyalty=Math.min(100,g.generals.find(x=>x.name==='Thương Ưởng').loyalty+4);addLog('Cải cách được ban hành; kỷ cương và lòng dân được củng cố.','good')}advance();render()}
+function endTurn(){advance();addLog('Năm mới '+Math.abs(g.year)+' TCN: sứ thần và thương nhân mang tin tức từ các nước.','info');render()}
+function march(){let t=currentTarget();if(!t||g.owned.includes(t.name))return addLog('Hãy chọn một nước chưa bị chinh phục.','bad');if(g.food<15||g.troops<1200){addLog('Quân lương hoặc binh lực chưa đủ để hành quân.','bad');render();return}g.food-=15;g.campaign=true;g.armies=[{to:t.name,x:157+(t.x-157)*.55,y:275+(t.y-275)*.55}];addLog('Đạo quân của '+g.commander+' rời Hàm Dương, hành quân hướng '+t.name+'.','info');advance();render()}
+function diplomacy(){if(g.gold<15){addLog('Không đủ vàng chuẩn bị lễ vật ngoại giao.','bad');render();return}g.gold-=15;let t=currentTarget();if(!t||g.owned.includes(t.name)){addLog('Sứ thần báo rằng vùng đất này đã thuộc quyền Tần.');render();return}if(Math.random()>.42){t.power=Math.max(12,t.power-3);g.morale=Math.min(100,g.morale+3);addLog('Sứ giả đạt thỏa thuận tạm thời; tình báo giúp ta hiểu rõ đối phương hơn.','good')}else addLog('Sứ giả trở về tay không. Chư hầu chưa tin lời đề nghị.','bad');advance();render()}
+function openBattle(){let t=currentTarget();if(!t||g.owned.includes(t.name))return;if(!g.campaign){march();}if(g.food<20){addLog('Không đủ lương cho chiến dịch.','bad');render();return}g.battleOpen=true;$('battleArea').style.display='block';$('battleTitle').textContent='Chiến trường '+t.name+' · Chủ soái '+g.commander;drawBattle();$('battleReport').textContent='Trinh sát báo địch đã dàn trận. Hãy kiểm tra đội hình rồi ra lệnh giao chiến.';document.querySelector('#battleArea').scrollIntoView({behavior:'smooth',block:'nearest'})}
+function drawBattle(){let p=$('playerSoldiers'),e=$('enemySoldiers');p.innerHTML='';e.innerHTML='';let n=Math.min(36,Math.ceil((g.units.inf+g.units.cav+g.units.arch)/300));for(let i=0;i<n;i++){let s=document.createElement('i');s.className='soldier '+(i%4===0?'cav':i%3===0?'arch':'');p.appendChild(s)}let en=Math.min(36,Math.ceil((currentTarget().power*180)/300));for(let i=0;i<en;i++){let s=document.createElement('i');s.className='soldier';e.appendChild(s)}}
+function resolveBattle(){let t=currentTarget();if(!t||g.owned.includes(t.name))return;syncUnits();let total=g.units.inf+g.units.cav+g.units.arch;if(total>g.troops){$('battleReport').textContent='Tổng quân trong đội hình vượt quá quân số hiện có. Hãy giảm các thanh quân số.';return}if(total<1200){$('battleReport').textContent='Đội hình quá nhỏ để giao chiến. Hãy bổ sung quân.';return}if(g.food<30){$('battleReport').textContent='Thiếu lương thảo. Hãy khuyến nông hoặc chờ thêm lương.';return}
+let gen=g.generals.find(x=>x.name===g.commander)||g.generals[0];let strategy=document.querySelector('input[name="unused"]');let inf=g.units.inf,cav=g.units.cav,arch=g.units.arch;
+let armyScore=inf*.72+cav*1.05+arch*.82;armyScore=armyScore/1000*(.65+g.morale/160)+(gen.stat*.12)+(gen.level*2);
+let enemyScore=t.power*1.0+t.def*.62+Math.random()*8;let ratio=armyScore/enemyScore;
+let losses,won=ratio>1.05;if(won){losses=Math.min(g.troops-500,Math.floor(total*(.10+Math.random()*.12)));g.troops-=losses;g.food-=30;g.gold+=t.rich*2;g.owned.push(t.name);g.morale=Math.min(100,g.morale+8);t.power=Math.max(8,t.power-10);gen.loyalty=Math.min(100,gen.loyalty+3);$('battleReport').textContent='ĐẠI THẮNG! Đội hình phối hợp hiệu quả, '+t.name+' mở cổng quy hàng. Quân ta tổn thất '+fmt(losses)+' người.';addLog('Chiến thắng tại '+t.name+'! '+gen.name+' lập công, chiếm thành và thu chiến lợi phẩm.','good');g.armies=[];g.campaign=false;g.battleOpen=false;$('battleArea').style.display='none';$('story').textContent='Chiến thắng tại '+t.name+' làm chấn động chư hầu. Hãy củng cố hậu phương trước chiến dịch tiếp theo.'}
+else{losses=Math.min(g.troops-500,Math.floor(total*(.20+Math.random()*.16)));g.troops-=losses;g.food-=25;g.morale=Math.max(0,g.morale-10);gen.loyalty=Math.max(0,gen.loyalty-4);$('battleReport').textContent='THẤT BẠI! Phòng tuyến đối phương chưa thể phá vỡ. Quân ta tổn thất '+fmt(losses)+' người; cần bổ sung quân hoặc đổi đội hình.';addLog('Quân Tần bị chặn trước thành '+t.name+'. Chủ soái cần chỉnh đốn quân ngũ.','bad');g.campaign=false;g.armies=[]}
+advance();render();$('battleReport').textContent=$('battleReport').textContent+' (Tương quan sức mạnh: '+ratio.toFixed(2)+')';}
+function retreat(){g.food=Math.max(0,g.food-5);g.morale=Math.max(0,g.morale-2);g.campaign=false;g.armies=[];$('battleArea').style.display='none';addLog('Chủ soái hạ lệnh rút quân có trật tự, bảo toàn lực lượng.','info');render()}
+function saveGame(){try{localStorage.setItem('loanTheThatHung05',JSON.stringify(g));$('saveStatus').textContent='Đã lưu tiến trình trên thiết bị này.'}catch(e){$('saveStatus').textContent='Trình duyệt không cho phép lưu tiến trình.'}}
+function resetGame(){if(confirm('Bắt đầu lại từ đầu?')){g=initial();chosenGeneral='Bạch Khởi';$('battleArea').style.display='none';addLog('Bạn đăng cơ tại Tần, mở triều nghị đầu tiên.','good');render()}}
+try{let s=localStorage.getItem('loanTheThatHung05')||localStorage.getItem('loanTheThatHung02');if(s){let parsed=JSON.parse(s);if(parsed&&parsed.states&&parsed.generals)g=parsed}}catch(e){}
+
+// ===== Bản 0.5: ngoại giao sâu hơn, nổi loạn, trung thành và kế vị =====
+const render02=render, advance02=advance, diplomacy02=diplomacy, saveGame02=saveGame;
+function migrateV05(){
+  if(!g.relations)g.relations={};
+  if(!g.alliances)g.alliances=[];
+  if(g.legitimacy==null)g.legitimacy=55;
+  if(g.heir==null)g.heir='Doanh Tứ';
+  if(g.heirAppointed==null)g.heirAppointed=false;
+  if(g.rebellion==null)g.rebellion={active:false,turns:0};
+  g.states.forEach(st=>{if(g.relations[st.name]==null)g.relations[st.name]=st.name==='Tần'?100:35;});
+}
+migrateV05();
+function renderV05(){
+  const put=(id,v)=>{const el=$(id);if(el)el.textContent=v;};
+  put('legitimacy',Math.round(g.legitimacy));put('allianceCount',g.alliances.filter(a=>a.until>=g.turn).length);
+  put('heirName',g.heir||'Chưa chọn');put('heirStatus',g.heirAppointed?'Đã sắc phong thái tử':'Thái tử chưa lập');
+  const risk=(g.morale<25||g.generals.some(x=>x.loyalty<25))?'Cao':(g.morale<45||g.generals.some(x=>x.loyalty<45))?'Trung bình':'Thấp';
+  put('rebellionRisk',risk);put('rebellionText',g.rebellion.active?'Đang có biến loạn trong nước':(risk==='Cao'?'Cần trấn an ngay':'Dân tâm '+Math.round(g.morale)+'/100'));
+  const t=currentTarget();put('diplomacyTarget',t?t.name:'—');
+  const rel=t?Math.round(g.relations[t.name]||0):0;const al=t&&g.alliances.some(a=>a.name===t.name&&a.until>=g.turn);
+  put('diplomacyInfo',t?(t.name+' · Quan hệ '+rel+'/100 · '+(al?'Đang có minh ước đến lượt '+g.alliances.find(a=>a.name===t.name).until:(g.owned.includes(t.name)?'Đã thuộc Tần':'Chưa kết minh'))):'Chọn một nước để mở đàm phán.');
+}
+render=function(){render02();renderV05();};
+function hasAlliance(name){return g.alliances.some(a=>a.name===name&&a.until>=g.turn)}
+function makeAlliance(){const t=currentTarget();if(!t||g.owned.includes(t.name)){addLog('Chỉ có thể kết minh với một nước chưa bị chinh phục.','bad');render();return}if(hasAlliance(t.name)){addLog('Minh ước với '+t.name+' vẫn còn hiệu lực.','info');render();return}if(g.gold<30){addLog('Không đủ 30 vàng để chuẩn bị lễ kết minh.','bad');render();return}g.gold-=30;const rel=g.relations[t.name]||30;const chance=Math.min(.88,.35+rel/150+(g.legitimacy-50)/250);if(Math.random()<chance){g.alliances.push({name:t.name,until:g.turn+3});g.relations[t.name]=Math.min(100,rel+25);g.legitimacy=Math.min(100,g.legitimacy+3);addLog('Kết minh thành công với nước '+t.name+' trong 3 lượt. Quan hệ hai nước được cải thiện.','good')}else{g.relations[t.name]=Math.max(0,rel-5);addLog('Đàm phán kết minh với '+t.name+' thất bại; triều đình đối phương còn nghi kỵ.','bad')}advance();render()}
+function offerTribute(){const t=currentTarget();if(!t||g.owned.includes(t.name)){addLog('Không thể cống lễ cho lãnh thổ đã thuộc Tần.','bad');render();return}if(g.gold<20){addLog('Không đủ 20 vàng để chuẩn bị cống lễ.','bad');render();return}g.gold-=20;g.relations[t.name]=Math.min(100,(g.relations[t.name]||30)+18);t.power=Math.max(10,t.power-2);g.legitimacy=Math.max(0,g.legitimacy-1);addLog('Sứ thần mang lễ vật sang '+t.name+'. Quan hệ dịu lại, nhưng triều đình hao tổn ngân khố.','good');advance();render()}
+function breakAlliance(){const t=currentTarget();if(!t||!hasAlliance(t.name)){addLog('Không có minh ước còn hiệu lực với nước này.','bad');render();return}g.alliances=g.alliances.filter(a=>a.name!==t.name);g.relations[t.name]=Math.max(0,(g.relations[t.name]||30)-30);g.legitimacy=Math.max(0,g.legitimacy-5);addLog('Tần đơn phương bãi minh ước với '+t.name+'. Quan hệ xấu đi và uy vọng triều đình giảm.','bad');render()}
+function rewardGenerals(){if(g.gold<25){addLog('Không đủ 25 vàng để ban thưởng.','bad');render();return}g.gold-=25;g.generals.forEach(x=>x.loyalty=Math.min(100,x.loyalty+8));g.legitimacy=Math.min(100,g.legitimacy+2);addLog('Triều đình ban thưởng toàn quân; lòng trung thành của các tướng tăng lên.','good');render()}
+function relievePeople(){if(g.gold<30){addLog('Không đủ 30 vàng để miễn giảm sưu thuế.','bad');render();return}g.gold-=30;g.morale=Math.min(100,g.morale+14);g.legitimacy=Math.min(100,g.legitimacy+5);addLog('Giảm sưu thuế, phát chẩn cho dân. Dân tâm và uy vọng triều đình tăng rõ rệt.','good');render()}
+function appointHeir(){if(g.heirAppointed){addLog(g.heir+' đã được sắc phong thái tử.','info');render();return}if(g.gold<40){addLog('Cần 40 vàng cho đại lễ sắc phong thái tử.','bad');render();return}g.gold-=40;g.heirAppointed=true;g.legitimacy=Math.min(100,g.legitimacy+10);g.generals.forEach(x=>x.loyalty=Math.min(100,x.loyalty+2));addLog(g.heir+' được sắc phong thái tử. Triều đình có người kế vị, giảm nguy cơ tranh ngôi.','good');render()}
+function succession(){if(!g.heirAppointed){addLog('Chưa có thái tử. Hãy sắc phong người kế vị trước khi truyền ngôi.','bad');render();return}if(g.legitimacy<45){addLog('Uy vọng dưới 45: triều thần chưa thuận phục, chưa thể truyền ngôi an toàn.','bad');render();return}const old=g.heir;g.heir=old==='Doanh Tứ'?'Doanh Chính':old==='Doanh Chính'?'Doanh Tử Sở':'Doanh Tứ';g.heirAppointed=false;g.legitimacy=Math.max(30,g.legitimacy-12);g.morale=Math.max(0,g.morale-3);g.generals.forEach(x=>x.loyalty=Math.max(0,x.loyalty-2));addLog('Đại lễ truyền ngôi hoàn tất. '+old+' lên ngôi; uy vọng giảm nhẹ trong giai đoạn chuyển giao. Hãy sắc phong thái tử mới khi sẵn sàng.','good');render()}
+function checkRebellion(){
+  const disloyal=g.generals.filter(x=>x.loyalty<22);
+  if(!g.rebellion.active&&(g.morale<22||disloyal.length>0)&&Math.random()<.38){g.rebellion.active=true;g.rebellion.turns=2;g.troops=Math.max(500,Math.floor(g.troops*.88));g.gold=Math.max(0,g.gold-15);g.morale=Math.max(0,g.morale-8);g.legitimacy=Math.max(0,g.legitimacy-12);addLog('BIẾN LOẠN! Quân dân bất mãn nổi dậy, kho lẫm bị cướp phá và một phần binh lực tan rã. Hãy miễn thuế hoặc ban thưởng để ổn định triều đình.','bad')}
+  if(g.rebellion.active){g.rebellion.turns--;if(g.morale>=45&&g.generals.every(x=>x.loyalty>=35)){g.rebellion.active=false;addLog('Biến loạn được dẹp yên nhờ dân tâm phục hồi và tướng lĩnh trở lại trung thành.','good')}else if(g.rebellion.turns<=0){g.rebellion.active=false;g.morale=Math.max(0,g.morale-5);addLog('Biến loạn tạm lắng nhưng bất mãn vẫn âm ỉ trong dân gian.','bad')}}
+}
+advance=function(){advance02();g.legitimacy=Math.max(0,Math.min(100,g.legitimacy+(g.morale>=65?1:g.morale<30?-3:0)));g.alliances=g.alliances.filter(a=>a.until>=g.turn);g.generals.forEach(x=>{if(x.loyalty<35&&Math.random()<.16){g.gold=Math.max(0,g.gold-5);addLog('Tướng '+x.name+' đòi thêm bổng lộc; triều đình hao 5 vàng để giữ lòng người.','bad')}});checkRebellion();};
+diplomacy=function(){const t=currentTarget();if(!t||g.owned.includes(t.name)){addLog('Sứ thần không thể đàm phán với lãnh thổ đã thuộc Tần.','bad');render();return}if(g.gold<15){addLog('Không đủ vàng chuẩn bị lễ vật ngoại giao.','bad');render();return}g.gold-=15;g.relations[t.name]=Math.min(100,(g.relations[t.name]||30)+10);if(Math.random()>.38){t.power=Math.max(12,t.power-4);g.morale=Math.min(100,g.morale+2);addLog('Sứ thần đạt thỏa thuận tạm thời với '+t.name+'. Quan hệ cải thiện và tình báo làm suy yếu thế địch.','good')}else{g.relations[t.name]=Math.max(0,g.relations[t.name]-4);addLog('Sứ thần trở về tay không; quan hệ với '+t.name+' xấu đi đôi chút.','bad')}advance();render()};
+saveGame=function(){try{localStorage.setItem('loanTheThatHung05',JSON.stringify(g));$('saveStatus').textContent='Đã lưu tiến trình bản 0.5 trên thiết bị này.'}catch(e){$('saveStatus').textContent='Trình duyệt không cho phép lưu tiến trình.'}};
+addLog('Bạn đăng cơ tại Tần. Bảy nước nhìn nhau qua núi sông; thời cơ thống nhất vẫn còn ở phía trước.','good');render();
+</script>
+</body></html>
